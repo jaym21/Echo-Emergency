@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Helplines.AccidentHelplines"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:id="@+id/accident">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:cardBackgroundColor="#a8e063"
+        app:cardCornerRadius="20dp"
+        android:elevation="5dp"
+        android:padding="10dp"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fire Helpline : 101"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:cardBackgroundColor="#a8e063"
+        app:cardCornerRadius="20dp"
+        android:elevation="5dp"
+        android:padding="10dp"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Road Accident Helpline : 1073"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:cardBackgroundColor="#a8e063"
+        app:cardCornerRadius="20dp"
+        android:elevation="5dp"
+        android:padding="10dp"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Railway Accident Helpline : 1072"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:cardBackgroundColor="#a8e063"
+        app:cardCornerRadius="20dp"
+        android:elevation="5dp"
+        android:padding="10dp"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Earthquake/Flood/Disaster : 011-24363260"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:cardBackgroundColor="#a8e063"
+        app:cardCornerRadius="20dp"
+        android:elevation="5dp"
+        android:padding="10dp"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Disaster Management Helpline : 108"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>
