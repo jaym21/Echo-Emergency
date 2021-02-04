@@ -2,11 +2,16 @@ package com.example.echoemergency
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.FragmentTransaction
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.echoemergency.databinding.ActivityMainBinding
+import com.example.echoemergency.fragments.Alert
+import com.example.echoemergency.fragments.Home
+import com.example.echoemergency.fragments.Profile
 
 class MainActivity : AppCompatActivity() {
+
+    //viewBinding
+    lateinit var binding: ActivityMainBinding
 
     //creating fragments object
     lateinit var homeFragment: Home
@@ -15,7 +20,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //setting default fragment as home
         homeFragment = Home()
@@ -26,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             .commit()
 
         //setting bottom nav click listener
-        bottomNavMenu.setOnNavigationItemSelectedListener {
+        binding.bottomNavMenu.setOnNavigationItemSelectedListener {
 
             when(it.itemId) {
                 R.id.home -> {

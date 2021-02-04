@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Helplines.PoliceHelplines"
+    tools:context=".HelplinesActivity.PoliceHelplines"
     android:orientation="vertical"
-    android:layout_margin="20dp"
+    android:padding="16dp"
     android:id="@+id/police">
 
     <com.google.android.material.card.MaterialCardView
@@ -14,16 +14,17 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         app:cardBackgroundColor="#a8e063"
-        app:cardCornerRadius="20dp"
-        android:elevation="5dp"
+        app:cardCornerRadius="40dp"
+        app:elevation="5dp"
         android:padding="10dp"
         android:layout_marginTop="40dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Police Helpline : 100"
-            android:textSize="20dp"
+            android:text="@string/police_helpline_100"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins_semi_bold"
             android:gravity="center"
             android:layout_gravity="center_vertical"
             android:layout_margin="8dp"/>
@@ -35,16 +36,17 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         app:cardBackgroundColor="#a8e063"
-        app:cardCornerRadius="20dp"
-        android:elevation="5dp"
+        app:cardCornerRadius="40dp"
+        app:elevation="5dp"
         android:padding="10dp"
         android:layout_marginTop="40dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Missing Child And Women : 1094"
-            android:textSize="20dp"
+            android:text="@string/missing_child_and_women_1094"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins_semi_bold"
             android:gravity="center"
             android:layout_gravity="center_vertical"
             android:layout_margin="8dp"/>
@@ -56,16 +58,17 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         app:cardBackgroundColor="#a8e063"
-        app:cardCornerRadius="20dp"
-        android:elevation="5dp"
+        app:cardCornerRadius="40dp"
+        app:elevation="5dp"
         android:padding="10dp"
         android:layout_marginTop="40dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tourist Helpline : 1363"
-            android:textSize="20dp"
+            android:text="@string/tourist_helpline_1363"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins_semi_bold"
             android:gravity="center"
             android:layout_gravity="center_vertical"
             android:layout_margin="8dp"/>

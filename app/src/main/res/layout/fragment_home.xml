@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Home"
+    tools:context=".fragments.Home"
     android:background="@drawable/home_background">
 
     <androidx.constraintlayout.widget.Guideline
@@ -18,8 +18,9 @@
         android:id="@+id/tvEcho"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Echo"
-        android:textSize="35dp"
+        android:text="@string/echo"
+        android:textSize="35sp"
+        android:fontFamily="@font/poppins_bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_margin="20dp"/>
@@ -28,19 +29,20 @@
         android:id="@+id/tvEmergency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Emergency"
-        android:textSize="35dp"
+        android:text="@string/emergency"
+        android:textSize="35sp"
+        android:fontFamily="@font/poppins_bold"
         app:layout_constraintTop_toBottomOf="@id/tvEcho"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="20dp"/>
 
     <TextView
         android:id="@+id/tvHelpline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Emergency Helplines"
+        android:text="@string/emergency_helplines"
         android:textSize="16sp"
+        android:fontFamily="@font/poppins_light"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvEmergency"
@@ -77,8 +79,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Police"
+                android:text="@string/police"
                 android:textSize="18sp"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:layout_marginTop="10dp"/>
 
@@ -117,8 +120,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Medical"
+                android:text="@string/medical"
                 android:textSize="18sp"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:layout_marginTop="10dp"/>
 
@@ -155,8 +159,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Accident/Fire"
+                android:text="@string/accident_fire"
                 android:textSize="18sp"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center" />
 
         </LinearLayout>
@@ -192,8 +197,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Human Rights"
+                android:text="@string/human_rights"
                 android:textSize="18sp"
+                android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:layout_marginTop="10dp"/>
 

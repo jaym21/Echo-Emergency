@@ -2,4 +2,27 @@
     <string name="app_name">Echo Emergency</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="echo">Echo</string>
+    <string name="emergency_helplines">Emergency Helplines</string>
+    <string name="emergency">Emergency</string>
+    <string name="police">Police</string>
+    <string name="medical">Medical</string>
+    <string name="accident_fire">Accident/Fire</string>
+    <string name="human_rights">Human Rights</string>
+    <string name="ambulance_helpline_102">Ambulance Helpline : 102</string>
+    <string name="aids_helpline_1097">Aids Helpline : 1097</string>
+    <string name="air_ambulance_9540161344">Air Ambulance : 9540161344</string>
+    <string name="anti_poison_new_delhi_1066">Anti Poison(New Delhi) : 1066</string>
+    <string name="police_helpline_100">Police Helpline : 100</string>
+    <string name="tourist_helpline_1363">Tourist Helpline : 1363</string>
+    <string name="missing_child_and_women_1094">Missing Child And Women : 1094</string>
+    <string name="women_helpline_1091">Women Helpline : 1091</string>
+    <string name="children_in_difficult_situation_helpline_1098">Children In Difficult Situation Helpline: 1098</string>
+    <string name="senior_citizen_helpline_1091_1291">Senior Citizen Helpline : 1091/1291</string>
+    <string name="women_helpline_domestic_abuse_102">Women Helpline(Domestic Abuse) : 102</string>
+    <string name="fire_helpline_101">Fire Helpline : 101</string>
+    <string name="disaster_management_helpline_108">Disaster Management Helpline : 108</string>
+    <string name="earthquake_flood_disaster_9711077372">Earthquake/Flood/Disaster : 9711077372</string>
+    <string name="railway_accident_helpline_1072">Railway Accident Helpline : 1072</string>
+    <string name="road_accident_helpline_1073">Road Accident Helpline : 1073</string>
 </resources>
