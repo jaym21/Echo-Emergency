@@ -23,7 +23,9 @@ class Alert : Fragment() {
 
     //it is just an int that must be unique so it can be any number
     private var PERMISSION_ID = 1000
+    private var SMS_ID = 1001
     private var requestSendSms = 2
+    private val number = "9819601456"
 
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var locationRequest: LocationRequest
@@ -61,13 +63,14 @@ class Alert : Fragment() {
                 var location = it.result
                 if (location != null){
                     //location.latitude will give latitude and location.longitude will give longitude
-                    // now for sending sms with longitude and latitude
+                    //now for sending sms with longitude and latitude
                     if (ActivityCompat.checkSelfPermission(context as Activity, android.Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED){
-                        val number = "9819601456"
-                        val text = "Help"
-                        SmsManager.getDefault().sendTextMessage(number,null,text,null,null)
+                        sendSms(number, location)
                     }else{
-                        ActivityCompat.checkSelfPermission(context as Activity, android.Manifest.permission.SEND_SMS)
+                        ActivityCompat.requestPermissions(
+                                context as Activity,
+                                arrayOf(android.Manifest.permission.SEND_SMS),SMS_ID
+                        )
                     }
                 } else{
                     //if the location is null, we will get new location of user
@@ -78,6 +81,12 @@ class Alert : Fragment() {
         }else {
             requestPermission()
         }
+    }
+
+    private fun sendSms(number: String, location: Location) {
+        val smsManager = SmsManager.getDefault() as SmsManager
+
+        smsManager.sendTextMessage(number, null, "http://maps.google.com?q=${location.latitude},${location.longitude}", null, null)
     }
 
     @SuppressLint("MissingPermission")
@@ -98,16 +107,15 @@ class Alert : Fragment() {
     private val locationCallback = object : LocationCallback(){
         override fun onLocationResult(locationResult: LocationResult) {
             var lastLocation: Location = locationResult.lastLocation
-            val number = "9819601456"
-                val text = "Help"
-            SmsManager.getDefault().sendTextMessage(number,null,text,null,null)
+            sendSms(number, lastLocation)
         }
     }
 
     //to check is location permissions are granted
     private fun checkPermission(): Boolean{
         if (ActivityCompat.checkSelfPermission(context as Activity, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
-                ActivityCompat.checkSelfPermission(context as Activity, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                ActivityCompat.checkSelfPermission(context as Activity, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                        ActivityCompat.checkSelfPermission(context as Activity, android.Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED
         ){
             return true
         }
@@ -119,6 +127,10 @@ class Alert : Fragment() {
         ActivityCompat.requestPermissions(
                 context as Activity,
                 arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION), PERMISSION_ID
+        )
+        ActivityCompat.requestPermissions(
+                context as Activity,
+                arrayOf(android.Manifest.permission.SEND_SMS),SMS_ID
         )
     }
 
@@ -138,4 +150,5 @@ class Alert : Fragment() {
             }
         }
     }
+
 }
