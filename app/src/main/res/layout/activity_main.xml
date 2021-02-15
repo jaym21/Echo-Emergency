@@ -19,6 +19,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_margin="16dp"
+        android:padding="3dp"
         android:elevation="2dp"
         app:menu="@menu/nav_menu"
         android:background="@drawable/bottom_nav"

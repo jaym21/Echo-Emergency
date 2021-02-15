@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.echoemergency.databinding.ActivityMainBinding
 import com.example.echoemergency.fragments.Alert
 import com.example.echoemergency.fragments.Home
-import com.example.echoemergency.fragments.Profile
+import com.example.echoemergency.fragments.Settings
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     //creating fragments object
     lateinit var homeFragment: Home
     lateinit var alertFragment: Alert
-    lateinit var profileFragment: Profile
+    lateinit var settingsFragment: Settings
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,11 +51,11 @@ class MainActivity : AppCompatActivity() {
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit()
                 }
-                R.id.profile -> {
-                    profileFragment = Profile()
+                R.id.settings -> {
+                    settingsFragment = Settings()
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.frameLayout, profileFragment)
+                        .replace(R.id.frameLayout, settingsFragment)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit()
                 }
