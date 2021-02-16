@@ -19,25 +19,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter name and number of people to be alerted"
+        android:text="Enter number of people to be alerted"
         android:textSize="18sp"
         android:fontFamily="@font/poppins_regular"
         android:layout_marginTop="20dp"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Name"
-        android:fontFamily="@font/poppins_regular"
-        android:layout_marginTop="16dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etName"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/poppins_regular"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -71,8 +56,16 @@
         android:paddingRight="30dp"
         app:cornerRadius="30dp"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Numbers that will be alerted"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginTop="20dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvAlertPeople"
+        android:id="@+id/rvAlertNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

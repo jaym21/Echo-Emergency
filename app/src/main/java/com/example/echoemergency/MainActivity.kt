@@ -3,6 +3,8 @@ package com.example.echoemergency
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
+import com.example.echoemergency.components.NumberViewModel
 import com.example.echoemergency.databinding.ActivityMainBinding
 import com.example.echoemergency.fragments.Alert
 import com.example.echoemergency.fragments.Home
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var homeFragment: Home
     lateinit var alertFragment: Alert
     lateinit var settingsFragment: Settings
+    lateinit var viewModel: NumberViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,5 +66,8 @@ class MainActivity : AppCompatActivity() {
 
             true
         }
+
+        //creating a instance or object of viewModel
+        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(NumberViewModel::class.java)
     }
 }
