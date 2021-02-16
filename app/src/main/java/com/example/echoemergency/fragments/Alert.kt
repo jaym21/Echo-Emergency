@@ -13,6 +13,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.Observer
+import com.example.echoemergency.MainActivity
+import com.example.echoemergency.components.NumberViewModel
 import com.example.echoemergency.databinding.FragmentAlertBinding
 import com.google.android.gms.location.*
 
@@ -29,6 +32,7 @@ class Alert : Fragment() {
 
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var locationRequest: LocationRequest
+    lateinit var viewModel: NumberViewModel
 
 
 
@@ -46,11 +50,19 @@ class Alert : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //initializing viewModel by casting this as MainActivity so that we have access to the viewModel created in MainActivity
+        viewModel = (activity as MainActivity).viewModel
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context as Activity)
 
         binding.btnAlert.setOnClickListener {
             getLocation()
         }
+
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
     }
 
 
