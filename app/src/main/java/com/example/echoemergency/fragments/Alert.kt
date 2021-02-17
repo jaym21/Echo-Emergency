@@ -33,6 +33,7 @@ class Alert : Fragment() {
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var locationRequest: LocationRequest
     lateinit var viewModel: NumberViewModel
+    lateinit var numbersSaved: List<String>
 
 
 
@@ -63,6 +64,11 @@ class Alert : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+
+
+
+
     }
 
 
@@ -98,7 +104,13 @@ class Alert : Fragment() {
     private fun sendSms(number: String, location: Location) {
         val smsManager = SmsManager.getDefault() as SmsManager
 
-        smsManager.sendTextMessage(number, null, "http://maps.google.com?q=${location.latitude},${location.longitude}", null, null)
+        viewModel.allNumbers.observe(viewLifecycleOwner, Observer { list -> list?.let {
+            for (i in it) {
+                smsManager.sendTextMessage(i.number, null, "http://maps.google.com?q=${location.latitude},${location.longitude}", null, null)
+            }
+
+        } })
+//        smsManager.sendTextMessage(number, null, "http://maps.google.com?q=${location.latitude},${location.longitude}", null, null)
     }
 
     @SuppressLint("MissingPermission")
