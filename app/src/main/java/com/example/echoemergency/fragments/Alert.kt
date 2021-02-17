@@ -10,6 +10,7 @@ import android.telephony.SmsManager
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
@@ -18,6 +19,7 @@ import com.example.echoemergency.MainActivity
 import com.example.echoemergency.components.NumberViewModel
 import com.example.echoemergency.databinding.FragmentAlertBinding
 import com.google.android.gms.location.*
+import com.google.android.material.button.MaterialButton
 
 class Alert : Fragment() {
 
@@ -34,6 +36,7 @@ class Alert : Fragment() {
     lateinit var locationRequest: LocationRequest
     lateinit var viewModel: NumberViewModel
     lateinit var numbersSaved: List<String>
+    var time: Long = 0
 
 
 
@@ -56,18 +59,22 @@ class Alert : Fragment() {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context as Activity)
 
-        binding.btnAlert.setOnClickListener {
-            getLocation()
-        }
 
-    }
+        binding.btnAlert.setOnTouchListener(object: View.OnTouchListener {
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                if (event?.action == MotionEvent.ACTION_DOWN) {
+                    time = System.currentTimeMillis()
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+                } else if (event?.action == MotionEvent.ACTION_UP) {
 
-
-
-
+                    if ((System.currentTimeMillis() - time > 5000)) {
+                        getLocation()
+                        return true
+                    }
+                }
+                return false
+            }
+        })
 
     }
 
