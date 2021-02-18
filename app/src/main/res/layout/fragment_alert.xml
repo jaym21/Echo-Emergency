@@ -4,16 +4,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Alert">
+    tools:context=".fragments.Alert"
+    android:background="#FFB6B6">
 
     <TextView
-        android:id="@+id/tvNum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="Hold button for more than 5 seconds to alert"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/btnAlert"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAlert"
