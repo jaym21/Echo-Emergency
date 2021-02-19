@@ -25,4 +25,8 @@
     <string name="earthquake_flood_disaster_9711077372">Earthquake/Flood/Disaster : 9711077372</string>
     <string name="railway_accident_helpline_1072">Railway Accident Helpline : 1072</string>
     <string name="road_accident_helpline_1073">Road Accident Helpline : 1073</string>
+    <string name="enter_number_of_people_to_be_alerted">Enter number of people to be alerted</string>
+    <string name="number">Number</string>
+    <string name="numbers_that_will_be_alerted_with_your_current_location">Numbers that will be alerted with your current location:</string>
+    <string name="settings">Settings</string>
 </resources>

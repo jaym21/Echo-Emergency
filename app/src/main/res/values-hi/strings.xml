@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="emergency_helplines">आपातकालीन हेल्पलाइन</string>
+    <string name="police">पुलिस</string>
+    <string name="medical">मेडिकल</string>
+    <string name="accident_fire">दुर्घटना/आग</string>
+    <string name="human_rights">Hमानव अधिकार</string>
+    <string name="ambulance_helpline_102">एम्बुलेंस हेल्पलाइन: 102</string>
+    <string name="aids_helpline_1097">एड्स हेल्पलाइन: 1097</string>
+    <string name="air_ambulance_9540161344">वायु एम्बुलेंस: 9540161344</string>
+    <string name="anti_poison_new_delhi_1066">एंटी पॉइज़न (नई दिल्ली): 1066</string>
+    <string name="police_helpline_100">पुलिस हेल्पलाइन: 100</string>
+    <string name="tourist_helpline_1363">पर्यटक हेल्पलाइन: 1363</string>
+    <string name="missing_child_and_women_1094">मिसिंग चाइल्ड एंड वीमेन: 1094</string>
+    <string name="women_helpline_1091">महिला हेल्पलाइन: 1091</string>
+    <string name="children_in_difficult_situation_helpline_1098">मुश्किल स्थिति में बच्चे हेल्पलाइन: 1098</string>
+    <string name="senior_citizen_helpline_1091_1291">वरिष्ठ नागरिक हेल्पलाइन: 1091/1291</string>
+    <string name="women_helpline_domestic_abuse_102">महिला हेल्पलाइन (घरेलू दुरुपयोग): 102</string>
+    <string name="fire_helpline_101">फायर हेल्पलाइन: 101</string>
+    <string name="disaster_management_helpline_108">आपदा प्रबंधन हेल्पलाइन: 108</string>
+    <string name="earthquake_flood_disaster_9711077372">भूकंप / बाढ़ / आपदा: 9711077372</string>
+    <string name="railway_accident_helpline_1072">रेलवे दुर्घटना हेल्पलाइन: 1072</string>
+    <string name="road_accident_helpline_1073">सड़क दुर्घटना हेल्पलाइन: 1073</string>
+    <string name="enter_number_of_people_to_be_alerted">सतर्क करने के लिए लोगों की संख्या दर्ज करें</string>
+    <string name="number">संख्या</string>
+    <string name="numbers_that_will_be_alerted_with_your_current_location">वे नंबर जो आपके वर्तमान स्थान के साथ अलर्ट हो जाएंगे:</string>
+    <string name="settings">समायोजन</string>
+</resources>
