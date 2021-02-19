@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import com.example.echoemergency.MainActivity
@@ -117,6 +118,8 @@ class Alert : Fragment() {
             }
 
         } })
+
+        Toast.makeText(context, "Message sent successfully", Toast.LENGTH_LONG).show()
 //        smsManager.sendTextMessage(number, null, "http://maps.google.com?q=${location.latitude},${location.longitude}", null, null)
     }
 

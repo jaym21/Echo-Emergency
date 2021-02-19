@@ -16,11 +16,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EchoEmergency">
-        <activity android:name=".HelplinesActivity.HumanRightsHelplines" />
-        <activity android:name=".HelplinesActivity.AccidentHelplines" />
-        <activity android:name=".HelplinesActivity.MedicalHelplines" />
-        <activity android:name=".HelplinesActivity.PoliceHelplines" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".HelplinesActivity.HumanRightsHelplines"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HelplinesActivity.AccidentHelplines"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HelplinesActivity.MedicalHelplines"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HelplinesActivity.PoliceHelplines"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

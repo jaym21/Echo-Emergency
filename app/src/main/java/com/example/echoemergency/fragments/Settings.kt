@@ -39,10 +39,6 @@ class Settings : Fragment(), INumberRVAdapter {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        //initializing spinner
-        spinner = binding.spLanguage
-
-        arrayAdapter = ArrayAdapter(this, )
 
         //initializing viewModel by casting this as MainActivity so that we have access to the viewModel created in MainActivity
         viewModel = (activity as MainActivity).viewModel
