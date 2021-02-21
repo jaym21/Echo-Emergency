@@ -25,4 +25,6 @@
     <string name="number">संख्या</string>
     <string name="numbers_that_will_be_alerted_with_your_current_location">वे नंबर जो आपके वर्तमान स्थान के साथ अलर्ट हो जाएंगे:</string>
     <string name="settings">समायोजन</string>
+    <string name="hold_button_for_more_than_5_seconds_to_alert">5 सेकंड से अधिक के लिए बटन दबाए रखें अलर्ट करने के लिय</string>
+    <string name="alert">अलर्ट</string>
 </resources>

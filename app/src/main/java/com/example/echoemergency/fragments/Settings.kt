@@ -1,5 +1,9 @@
-package com.example.echoemergency.fragments
+    package com.example.echoemergency.fragments
 
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.recreate
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.echoemergency.MainActivity
@@ -16,15 +21,15 @@ import com.example.echoemergency.adapters.NumberRVAdapter
 import com.example.echoemergency.components.NumberViewModel
 import com.example.echoemergency.database.Number
 import com.example.echoemergency.databinding.FragmentSettingsBinding
+import java.util.*
 
-class Settings : Fragment(), INumberRVAdapter {
+    class Settings : Fragment(), INumberRVAdapter {
 
     //viewBinding
     private lateinit var binding: FragmentSettingsBinding
 
     private lateinit var viewModel: NumberViewModel
-    private lateinit var spinner: Spinner
-    private lateinit var arrayAdapter: ArrayAdapter<String>
+    private lateinit var langSelected: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +44,7 @@ class Settings : Fragment(), INumberRVAdapter {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        loadLocale()
 
         //initializing viewModel by casting this as MainActivity so that we have access to the viewModel created in MainActivity
         viewModel = (activity as MainActivity).viewModel
@@ -71,6 +77,43 @@ class Settings : Fragment(), INumberRVAdapter {
             }
 
         }
+
+        binding.btnChangeLang.setOnClickListener {
+
+            langSelected = binding.spLanguage.selectedItem.toString()
+            //changing language
+            changeLang(langSelected)
+        }
+    }
+
+    private fun changeLang(langSelected: String) {
+        if (langSelected == "English") {
+            setLocale("en")
+            recreate(requireActivity())
+        }else if (langSelected == "Hindi") {
+            setLocale("hi")
+            recreate(requireActivity())
+        }
+    }
+
+    private fun setLocale(lang: String) {
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.locale = locale
+        requireContext().resources.updateConfiguration(config, requireContext().resources.displayMetrics)
+
+        val editor = context?.getSharedPreferences("Settings", Context.MODE_PRIVATE)!!.edit()
+        editor.putString("My_Lang", lang)
+        editor.apply()
+
+    }
+
+    private fun loadLocale() {
+        val sharedPreferences = context?.getSharedPreferences("Settings", Activity.MODE_PRIVATE)
+        val language = sharedPreferences!!.getString("My_Lang", "")
+        setLocale(language!!)
     }
 
     override fun onItemClicked(number: Number) {

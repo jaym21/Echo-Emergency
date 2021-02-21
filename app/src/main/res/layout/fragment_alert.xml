@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hold button for more than 5 seconds to alert"
+        android:text="@string/hold_button_for_more_than_5_seconds_to_alert"
         android:textSize="18sp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@id/btnAlert"
@@ -23,7 +23,7 @@
         android:id="@+id/btnAlert"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:text="Alert"
+        android:text="@string/alert"
         android:textColor="#ff4d4d"
         android:textSize="30sp"
         android:fontFamily="@font/poppins_semi_bold"
