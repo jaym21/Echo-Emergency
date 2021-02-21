@@ -14,140 +14,185 @@
         android:text="@string/settings"
         android:textSize="30sp"
         android:layout_marginStart="5dp"
-        android:layout_marginBottom="10dp"
         android:textAllCaps="false"
         android:fontFamily="@font/poppins_bold"/>
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="40dp"
-        app:cardElevation="10dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Change app language"
-                android:textSize="16sp"
-                android:textColor="@color/light_green"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Change app language"
+                    android:textSize="16sp"
+                    android:textColor="@color/light_green"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+
+                    <Spinner
+                        android:id="@+id/spLanguage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:entries="@array/languages"
+                        android:padding="10dp"
+                        android:layout_gravity="center"/>
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/btnChangeLang"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_check"
+                        app:tint="#FFFFFF"
+                        android:backgroundTint="@color/green"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="20dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
+                android:orientation="vertical"
+                android:padding="20dp">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_number_of_people_to_be_alerted"
+            android:textColor="@color/light_green"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="20dp"/>
 
-                <Spinner
-                    android:id="@+id/spLanguage"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:entries="@array/languages"
-                    android:padding="10dp"
-                    android:layout_gravity="center"/>
+                    android:hint="@string/number"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginTop="16dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/poppins_regular"
+                        android:inputType="phone"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/btnChangeLang"
+                    android:id="@+id/btnSave"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_check"
+                    android:src="@drawable/ic_add"
                     app:tint="#FFFFFF"
                     android:backgroundTint="@color/green"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="20dp"/>
 
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="40dp"
-        app:cardElevation="10dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="20dp">
-
-        <LinearLayout
+                </LinearLayout>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:text="@string/numbers_that_will_be_alerted_with_your_current_location"
+            android:textSize="16sp"
+            android:textColor="@color/light_green"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="20dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/enter_number_of_people_to_be_alerted"
-        android:textColor="@color/light_green"
-        android:textSize="16sp"
-        android:fontFamily="@font/poppins_regular"
-        android:layout_marginTop="20dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAlertNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:scrollbars="vertical"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="20dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:hint="@string/number"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_marginTop="16dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etNumber"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_regular"
-                    android:inputType="phone"/>
+                    android:layout_weight="3"
+                    android:text="To show alert shortcut notification"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnSave"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_add"
-                app:tint="#FFFFFF"
-                android:backgroundTint="@color/green"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="20dp"/>
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchAlert"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
 
             </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/numbers_that_will_be_alerted_with_your_current_location"
-        android:textSize="16sp"
-        android:textColor="@color/light_green"
-        android:fontFamily="@font/poppins_regular"
-        android:layout_marginTop="20dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvAlertNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:scrollbars="vertical"/>
+        </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
+    </LinearLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

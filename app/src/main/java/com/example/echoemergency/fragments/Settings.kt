@@ -1,9 +1,10 @@
     package com.example.echoemergency.fragments
 
-import android.app.Activity
-import android.app.AlertDialog
+import android.app.*
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,9 +14,13 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.app.ActivityCompat.recreate
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.echoemergency.MainActivity
+import com.example.echoemergency.R
 import com.example.echoemergency.adapters.INumberRVAdapter
 import com.example.echoemergency.adapters.NumberRVAdapter
 import com.example.echoemergency.components.NumberViewModel
@@ -31,6 +36,11 @@ import java.util.*
     private lateinit var viewModel: NumberViewModel
     private lateinit var langSelected: String
 
+    //for alert shortcut notification
+    val CHANNEL_NAME = "alert_shortcut"
+    val CHANNERL_ID = "channel_alert"
+    val NOTIFICATION_ID = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,6 +54,9 @@ import java.util.*
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        createNotificationChannel()
+
+        //loading Locale
         loadLocale()
 
         //initializing viewModel by casting this as MainActivity so that we have access to the viewModel created in MainActivity
@@ -78,15 +91,48 @@ import java.util.*
 
         }
 
+        //changing app language according spinner selection when check button is clicked
         binding.btnChangeLang.setOnClickListener {
 
             langSelected = binding.spLanguage.selectedItem.toString()
             //changing language
             changeLang(langSelected)
         }
+
+
+        //opening app on click on notification
+        val intent = Intent(requireContext(), MainActivity::class.java)
+        //making pending intent
+        val pendingIntent = TaskStackBuilder.create(requireContext()).run {
+            addNextIntentWithParentStack(intent)
+            getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
+
+        //making alert shortcut notification
+        val notificationAlert = NotificationCompat.Builder(requireContext(), CHANNERL_ID)
+                .setContentText("Click to send alert in emergency")
+                .setSmallIcon(R.drawable.ic_alert)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setOngoing(true)
+                .setContentIntent(pendingIntent)
+                .build()
+
+        val notificationManager = NotificationManagerCompat.from(requireContext())
+
+        //on switch flip
+        binding.switchAlert.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                notificationManager.notify(NOTIFICATION_ID, notificationAlert)
+            }
+            else {
+                notificationManager.cancel(NOTIFICATION_ID)
+            }
+        }
+
     }
 
     private fun changeLang(langSelected: String) {
+        //setting Locale according to the language selected from the spinner
         if (langSelected == "English") {
             setLocale("en")
             recreate(requireActivity())
@@ -96,6 +142,7 @@ import java.util.*
         }
     }
 
+    //setting language selected as app language
     private fun setLocale(lang: String) {
         val locale = Locale(lang)
         Locale.setDefault(locale)
@@ -114,6 +161,14 @@ import java.util.*
         val sharedPreferences = context?.getSharedPreferences("Settings", Activity.MODE_PRIVATE)
         val language = sharedPreferences!!.getString("My_Lang", "")
         setLocale(language!!)
+    }
+
+    fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(CHANNERL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
+            val manager = requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            manager.createNotificationChannel(channel)
+        }
     }
 
     override fun onItemClicked(number: Number) {
