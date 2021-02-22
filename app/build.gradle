@@ -54,7 +54,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.3'
 
     //location
-    implementation "com.google.android.gms:play-services-location:17.1.0"
+    implementation "com.google.android.gms:play-services-location:18.0.0"
 
     //room
     implementation "androidx.room:room-ktx:2.2.6"

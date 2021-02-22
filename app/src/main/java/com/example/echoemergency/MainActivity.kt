@@ -80,6 +80,17 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        //when notification is clicked
+        val menuFragment = intent.getStringExtra("notificationFragment")
+        if (menuFragment != null) {
+            alertFragment = Alert()
+            supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.frameLayout, alertFragment)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .commit()
+        }
+
         //creating a instance or object of viewModel
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(NumberViewModel::class.java)
 

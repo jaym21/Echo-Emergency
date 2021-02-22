@@ -101,10 +101,11 @@ import java.util.*
 
 
         //opening app on click on notification
-        val intent = Intent(requireContext(), MainActivity::class.java)
+        val notificationIntent = Intent(requireContext(), MainActivity::class.java)
+        notificationIntent.putExtra("notificationFragment", "alertFragment")
         //making pending intent
         val pendingIntent = TaskStackBuilder.create(requireContext()).run {
-            addNextIntentWithParentStack(intent)
+            addNextIntentWithParentStack(notificationIntent)
             getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
         }
 
