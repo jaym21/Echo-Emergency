@@ -7,10 +7,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.Vibrator
+import android.os.*
 import android.provider.Settings
 import android.telephony.SmsManager
 import android.util.Log
@@ -69,46 +66,34 @@ class Alert : Fragment() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context as Activity)
 
 
-//        binding.btnAlert.setOnTouchListener(object: View.OnTouchListener {
-//            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-//                if (event?.action == MotionEvent.ACTION_DOWN) {
-//                    time = System.currentTimeMillis()
-//
-//                } else if (event?.action == MotionEvent.ACTION_UP) {
-//
-//                    if ((System.currentTimeMillis() - time > 5000)) {
-//                        getLocation()
-//                        return true
-//                    }
-//                }
-//                return false
-//            }
-//        })
+        binding.btnAlert.setOnTouchListener(object: View.OnTouchListener {
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                if (event?.action == MotionEvent.ACTION_DOWN) {
+                    isLongPress = true
+                    val handler = Handler()
+                    handler.postDelayed(Runnable {
+                        if(isLongPress) {
+                           vibratePhone()
+                            getLocation()
+                        }
+                    }, longClickDuration)
+                } else if(event?.action == MotionEvent.ACTION_UP) {
+                    isLongPress = false
+                }
+                return true
+            }
+        })
 
-//        binding.btnAlert.setOnTouchListener(object: View.OnTouchListener {
-//            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-//                if (event?.action == MotionEvent.ACTION_DOWN) {
-//                    isLongPress = true
-//                    val handler = Handler()
-//                    handler.postDelayed(Runnable {
-//                        if(isLongPress) {
-//                            val vibrator = requireActivity().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-//                            vibrator.vibrate(100)
-//                            getLocation()
-//                        }
-//                    }, longClickDuration)
-//                } else if(event?.action == MotionEvent.ACTION_UP) {
-//                    isLongPress = false
-//                }
-//                return true
-//            }
-//        })
-
-        binding.btnAlert.setOnClickListener {
-            getLocation()
-        }
     }
 
+    fun vibratePhone() {
+        val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator.vibrate(200)
+        }
+    }
 
     //to get the last location
     private fun getLocation() {
