@@ -1,4 +1,4 @@
-    package com.example.echoemergency.fragments
+    package com.example.echoemergency.ui.fragments
 
 import android.app.*
 import android.content.Context

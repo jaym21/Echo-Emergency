@@ -1,4 +1,4 @@
-package com.example.echoemergency.fragments
+package com.example.echoemergency.ui.fragments
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -36,7 +36,6 @@ class Alert : Fragment() {
     private var PERMISSION_ID = 1000
     private var SMS_ID = 1001
     private var requestSendSms = 2
-    private val number = "9819601456"
 
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var locationRequest: LocationRequest
@@ -102,7 +101,7 @@ class Alert : Fragment() {
 
             if (isLocationEnabled()) {
                 fusedLocationProviderClient.lastLocation.addOnCompleteListener {
-                    var location = it.result
+                    val location = it.result
                     if (location != null){
                         //location.latitude will give latitude and location.longitude will give longitude
                         //now for sending sms with longitude and latitude
@@ -199,7 +198,7 @@ class Alert : Fragment() {
 
     //to check if location is enabled on device
     private fun isLocationEnabled(): Boolean{
-        var locationManager = requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val locationManager = requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) || locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
     }
 

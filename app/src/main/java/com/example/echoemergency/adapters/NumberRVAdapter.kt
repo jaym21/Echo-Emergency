@@ -13,6 +13,7 @@ import com.example.echoemergency.database.Number
 class NumberRVAdapter(val context: Context, private val listener: INumberRVAdapter): RecyclerView.Adapter<NumberRVAdapter.ViewHolder>() {
 
     private val allNumbers = ArrayList<Number>()
+    private val lengthLimit = 5
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val number: TextView = itemView.findViewById(R.id.tvNumber)
@@ -34,7 +35,11 @@ class NumberRVAdapter(val context: Context, private val listener: INumberRVAdapt
     }
 
     override fun getItemCount(): Int {
-        return allNumbers.size
+        if(allNumbers.size > lengthLimit) {
+            return lengthLimit
+        } else{
+            return allNumbers.size
+        }
     }
 
     //this function is to tell recyclerview the changes observed by viewModel

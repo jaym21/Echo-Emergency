@@ -10,16 +10,18 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.echoemergency.components.NumberViewModel
 import com.example.echoemergency.databinding.ActivityMainBinding
-import com.example.echoemergency.fragments.Alert
-import com.example.echoemergency.fragments.Home
-import com.example.echoemergency.fragments.Settings
+import com.example.echoemergency.ui.fragments.Alert
+import com.example.echoemergency.ui.fragments.Home
+import com.example.echoemergency.ui.fragments.Settings
 
 class MainActivity : AppCompatActivity() {
 
     //viewBinding
-    lateinit var binding: ActivityMainBinding
+    private var binding: ActivityMainBinding? = null
 
     //creating fragments object
     lateinit var homeFragment: Home
@@ -35,50 +37,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding?.root)
 
 //        createNotificationChannel()
 
-        //setting default fragment as home
-        homeFragment = Home()
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.frameLayout, homeFragment)
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .commit()
-
-        //setting bottom nav click listener
-        binding.bottomNavMenu.setOnNavigationItemSelectedListener {
-
-            when(it.itemId) {
-                R.id.home -> {
-                    homeFragment = Home()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.frameLayout, homeFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-                }
-                R.id.alert -> {
-                    alertFragment = Alert()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.frameLayout, alertFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-                }
-                R.id.settings -> {
-                    settingsFragment = Settings()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.frameLayout, settingsFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit()
-                }
-            }
-
-            true
-        }
+        //settings up bottom navigation
+        setUpBottomNavigation()
 
         //when notification is clicked
         val menuFragment = intent.getStringExtra("notificationFragment")
@@ -113,6 +77,17 @@ class MainActivity : AppCompatActivity() {
 //            notificationManager.notify(NOTIFICATION_ID, notificationAlert)
 //        }
 
+    }
+
+    private fun setUpBottomNavigation() {
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment)
+
+        NavigationUI.setupWithNavController(binding!!.bottomNavView, navHostFragment!!.findNavController())
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 //
 //    fun createNotificationChannel() {

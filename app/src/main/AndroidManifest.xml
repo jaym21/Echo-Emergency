@@ -2,13 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.echoemergency">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -17,15 +17,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EchoEmergency">
-        <activity android:name=".HelplinesActivity.HumanRightsHelplines"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".HelplinesActivity.AccidentHelplines"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".HelplinesActivity.MedicalHelplines"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".HelplinesActivity.PoliceHelplines"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity"
+        <activity android:name=".ui.OnBoarding"></activity>
+        <activity
+            android:name=".ui.HelplinesActivity.HumanRightsHelplines"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.HelplinesActivity.AccidentHelplines"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.HelplinesActivity.MedicalHelplines"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.HelplinesActivity.PoliceHelplines"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
