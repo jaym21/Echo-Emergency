@@ -27,6 +27,7 @@ import com.example.echoemergency.components.NumberViewModel
 import com.example.echoemergency.database.Number
 import com.example.echoemergency.databinding.FragmentSettingsBinding
 import java.util.*
+import kotlin.collections.ArrayList
 
     class Settings : Fragment(), INumberRVAdapter {
 
@@ -74,7 +75,8 @@ import java.util.*
         //observing allNumbers LiveData to see changes and update ui if changes are made
         viewModel.allNumbers.observe(viewLifecycleOwner, Observer { list -> list?.let {
             //checking if the list is null that is no change is observed then this function won't get executed
-            adapter.updateList(it)
+//            adapter.updateList(it)
+            adapter.setData(it)
         } })
 
 

@@ -6,13 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.echoemergency.R
 import com.example.echoemergency.database.Number
+import com.example.echoemergency.utils.NumberDiffUtil
 
 class NumberRVAdapter(val context: Context, private val listener: INumberRVAdapter): RecyclerView.Adapter<NumberRVAdapter.ViewHolder>() {
 
-    private val allNumbers = ArrayList<Number>()
+    private var allNumbers = emptyList<Number>()
     private val lengthLimit = 5
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -43,13 +45,24 @@ class NumberRVAdapter(val context: Context, private val listener: INumberRVAdapt
     }
 
     //this function is to tell recyclerview the changes observed by viewModel
-    fun updateList(newList: List<Number>) {
-        //first clearing the older list of numbers
-        allNumbers.clear()
-        //adding the newList in which the changes are present
-        allNumbers.addAll(newList)
-        //updating the recyclerview with changes
-        notifyDataSetChanged()
+//    fun updateList(newList: List<Number>) {
+//        //first clearing the older list of numbers
+//        allNumbers.clear()
+//        //adding the newList in which the changes are present
+//        allNumbers.addAll(newList)
+//        //updating the recyclerview with changes
+//        notifyDataSetChanged()
+//    }
+
+    fun setData(newList: List<Number>) {
+        val diffUtil = NumberDiffUtil(allNumbers, newList)
+        //Calculates the list of update operations that can covert one list into the other one
+        val diffResults = DiffUtil.calculateDiff(diffUtil)
+        //first replacing oldList with the new Updated List for next Updates
+        allNumbers = newList
+        //updating the list
+        diffResults.dispatchUpdatesTo(this)
+
     }
 
 
