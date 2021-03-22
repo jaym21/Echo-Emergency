@@ -1,7 +1,7 @@
 package com.example.echoemergency.components
 
 import androidx.lifecycle.LiveData
-import com.example.echoemergency.database.Number
+import com.example.echoemergency.models.Number
 import com.example.echoemergency.database.NumberDAO
 
 //Repository is basically a simple class which is layer used to provide a cleaner API to viewModel or UI to communicate with

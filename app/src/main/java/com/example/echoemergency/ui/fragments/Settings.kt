@@ -10,13 +10,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.app.ActivityCompat.recreate
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.echoemergency.MainActivity
@@ -24,10 +21,9 @@ import com.example.echoemergency.R
 import com.example.echoemergency.adapters.INumberRVAdapter
 import com.example.echoemergency.adapters.NumberRVAdapter
 import com.example.echoemergency.components.NumberViewModel
-import com.example.echoemergency.database.Number
+import com.example.echoemergency.models.Number
 import com.example.echoemergency.databinding.FragmentSettingsBinding
 import java.util.*
-import kotlin.collections.ArrayList
 
     class Settings : Fragment(), INumberRVAdapter {
 

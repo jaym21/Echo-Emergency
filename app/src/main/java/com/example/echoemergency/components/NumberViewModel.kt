@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.echoemergency.database.Number
+import com.example.echoemergency.models.Number
 import com.example.echoemergency.database.NumberDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

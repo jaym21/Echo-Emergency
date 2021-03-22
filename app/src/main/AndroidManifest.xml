@@ -31,16 +31,16 @@
 
         </activity>
         <activity
-            android:name=".ui.HelplinesActivity.HumanRightsHelplines"
+            android:name=".ui.helplines.HumanRightsHelplines"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.HelplinesActivity.AccidentHelplines"
+            android:name=".ui.helplines.AccidentHelplines"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.HelplinesActivity.MedicalHelplines"
+            android:name=".ui.helplines.MedicalHelplines"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.HelplinesActivity.PoliceHelplines"
+            android:name=".ui.helplines.PoliceHelplines"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"

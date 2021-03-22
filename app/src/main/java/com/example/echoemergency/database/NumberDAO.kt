@@ -2,11 +2,12 @@ package com.example.echoemergency.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.echoemergency.models.Number
 
 @Dao
 interface NumberDAO {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE) //if same number is being added it will be ignored by help of onConflict
+    @Insert(onConflict = OnConflictStrategy.REPLACE) //if same number is being added it will be ignored by help of onConflict
     suspend fun insert(number: Number)
 
     @Delete

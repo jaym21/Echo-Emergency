@@ -6,10 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.echoemergency.ui.HelplinesActivity.AccidentHelplines
-import com.example.echoemergency.ui.HelplinesActivity.HumanRightsHelplines
-import com.example.echoemergency.ui.HelplinesActivity.MedicalHelplines
-import com.example.echoemergency.ui.HelplinesActivity.PoliceHelplines
+import com.example.echoemergency.ui.helplines.AccidentHelplines
+import com.example.echoemergency.ui.helplines.HumanRightsHelplines
+import com.example.echoemergency.ui.helplines.MedicalHelplines
+import com.example.echoemergency.ui.helplines.PoliceHelplines
 import com.example.echoemergency.databinding.FragmentHomeBinding
 
 class Home : Fragment() {

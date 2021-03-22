@@ -1,13 +1,7 @@
 package com.example.echoemergency
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.content.Context
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -15,8 +9,6 @@ import androidx.navigation.ui.NavigationUI
 import com.example.echoemergency.components.NumberViewModel
 import com.example.echoemergency.databinding.ActivityMainBinding
 import com.example.echoemergency.ui.fragments.Alert
-import com.example.echoemergency.ui.fragments.Home
-import com.example.echoemergency.ui.fragments.Settings
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,9 +16,7 @@ class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
 
     //creating fragments object
-    lateinit var homeFragment: Home
     lateinit var alertFragment: Alert
-    lateinit var settingsFragment: Settings
     lateinit var viewModel: NumberViewModel
 
       //for alert shortcut notification

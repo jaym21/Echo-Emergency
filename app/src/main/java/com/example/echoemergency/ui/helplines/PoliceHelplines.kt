@@ -1,4 +1,4 @@
-package com.example.echoemergency.ui.HelplinesActivity
+package com.example.echoemergency.ui.helplines
 
 import android.content.Intent
 import android.net.Uri

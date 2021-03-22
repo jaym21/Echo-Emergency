@@ -1,7 +1,7 @@
 package com.example.echoemergency.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.echoemergency.database.Number
+import com.example.echoemergency.models.Number
 
 class NumberDiffUtil(private val oldList: List<Number>, private val newList: List<Number>): DiffUtil.Callback() {
     override fun getOldListSize(): Int {

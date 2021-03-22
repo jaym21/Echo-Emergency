@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.echoemergency.R
-import com.example.echoemergency.database.Number
+import com.example.echoemergency.models.Number
 import com.example.echoemergency.utils.NumberDiffUtil
 
 class NumberRVAdapter(val context: Context, private val listener: INumberRVAdapter): RecyclerView.Adapter<NumberRVAdapter.ViewHolder>() {
