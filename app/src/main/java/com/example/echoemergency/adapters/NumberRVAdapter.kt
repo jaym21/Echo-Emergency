@@ -37,11 +37,12 @@ class NumberRVAdapter(val context: Context, private val listener: INumberRVAdapt
     }
 
     override fun getItemCount(): Int {
-        if(allNumbers.size > lengthLimit) {
-            return lengthLimit
-        } else{
-            return allNumbers.size
-        }
+//        return if(allNumbers.size > lengthLimit) {
+//            lengthLimit
+//        } else{
+//            allNumbers.size
+//        }
+        return allNumbers.size
     }
 
     //this function is to tell recyclerview the changes observed by viewModel
@@ -54,7 +55,7 @@ class NumberRVAdapter(val context: Context, private val listener: INumberRVAdapt
 //        notifyDataSetChanged()
 //    }
 
-    fun setData(newList: List<Number>) {
+    fun updateList(newList: List<Number>) {
         val diffUtil = NumberDiffUtil(allNumbers, newList)
         //Calculates the list of update operations that can covert one list into the other one
         val diffResults = DiffUtil.calculateDiff(diffUtil)

@@ -72,7 +72,7 @@ import java.util.*
         viewModel.allNumbers.observe(viewLifecycleOwner, Observer { list -> list?.let {
             //checking if the list is null that is no change is observed then this function won't get executed
 //            adapter.updateList(it)
-            adapter.setData(it)
+            adapter.updateList(it)
         } })
 
 
