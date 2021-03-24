@@ -27,10 +27,10 @@ class OnBoarding : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (restorePrefData()) {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+//        if (restorePrefData()) {
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//        }
 
         binding = ActivityOnBoardingBinding.inflate(layoutInflater)
         setContentView(binding?.root)
