@@ -1,7 +1,11 @@
 package com.example.echoemergency
 
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -18,18 +22,13 @@ class MainActivity : AppCompatActivity() {
     //creating fragments object
     lateinit var alertFragment: Alert
     lateinit var viewModel: NumberViewModel
-
-      //for alert shortcut notification
-//    val CHANNEL_NAME = "alert_shortcut"
-//    val CHANNERL_ID = "channel_alert"
-//    val NOTIFICATION_ID = 0
+    val CALL_CODE = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-//        createNotificationChannel()
 
         //settings up bottom navigation
         setUpBottomNavigation()
@@ -49,24 +48,16 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(NumberViewModel::class.java)
 
 
-//        //making alert shortcut notification
-//        val notificationAlert = NotificationCompat.Builder(this, CHANNERL_ID)
-//                .setContentTitle("Echo Emergency")
-//                .setContentText("Click to send alert in emergency")
-//                .setSmallIcon(R.drawable.ic_alert)
-//                .setPriority(NotificationCompat.PRIORITY_MAX)
-//                .build()
-//
-//        val notificationManager = NotificationManagerCompat.from(this)
-//
-//        //initializing MyApplication
-//        var mApp = MyApplication()
-//        //getting global variable value
-//        var sendAlertNotification = mApp.sendAlertNotification
-//        if(sendAlertNotification == 1) {
-//            notificationManager.notify(NOTIFICATION_ID, notificationAlert)
-//        }
+        //asking for CALL_PHONE permission
+        val permCall = ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)
 
+        if (permCall == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.CALL_PHONE),
+                CALL_CODE
+            )
+        }
     }
 
     private fun setUpBottomNavigation() {
@@ -79,12 +70,4 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         binding = null
     }
-//
-//    fun createNotificationChannel() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            val channel = NotificationChannel(CHANNERL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
-//            val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-//            manager.createNotificationChannel(channel)
-//        }
-//    }
 }

@@ -124,15 +124,15 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
-                        android:text="To show alert shortcut in notification"
+                        android:text="@string/to_show_shortcut_of_alert_in_notification"
                         android:textColor="@color/light_green"
-                        android:gravity="center" />
+                        android:gravity="center_vertical"/>
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/switchAlert"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:layout_weight="0.5"/>
 
                 </LinearLayout>
 
@@ -157,7 +157,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Change app language"
+                        android:text="@string/change_app_language"
                         android:textSize="16sp"
                         android:textColor="@color/light_green"/>
 

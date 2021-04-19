@@ -9,12 +9,24 @@
         android:id="@+id/home"
         android:name="com.example.echoemergency.ui.fragments.Home"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_alert"
+            app:destination="@id/alert"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/alert"
         android:name="com.example.echoemergency.ui.fragments.Alert"
         android:label="fragment_alert"
-        tools:layout="@layout/fragment_alert" />
+        tools:layout="@layout/fragment_alert" >
+        <action
+            android:id="@+id/action_alert_to_settings"
+            app:destination="@id/settings"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/settings"
         android:name="com.example.echoemergency.ui.fragments.Settings"

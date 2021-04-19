@@ -3,6 +3,7 @@
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
@@ -28,15 +29,16 @@ import java.util.*
     class Settings : Fragment(), INumberRVAdapter {
 
     //viewBinding
-    private lateinit var binding: FragmentSettingsBinding
+    private var binding: FragmentSettingsBinding? = null
 
     private lateinit var viewModel: NumberViewModel
     private lateinit var langSelected: String
+    lateinit var sharedPreferences: SharedPreferences
 
     //for alert shortcut notification
-    val CHANNEL_NAME = "alert_shortcut"
-    val CHANNERL_ID = "channel_alert"
-    val NOTIFICATION_ID = 0
+    private val CHANNEL_NAME = "alert_shortcut"
+    private val CHANNERL_ID = "channel_alert"
+    private val NOTIFICATION_ID = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +46,10 @@ import java.util.*
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentSettingsBinding.inflate(layoutInflater)
-        return binding.root
+
+        binding?.switchAlert?.isChecked = restorePrefData()
+
+        return binding?.root
     }
 
 
@@ -60,13 +65,13 @@ import java.util.*
         viewModel = (activity as MainActivity).viewModel
 
         //initializing recyclerView
-        binding.rvAlertNumber.layoutManager = LinearLayoutManager(activity)
+        binding?.rvAlertNumber?.layoutManager = LinearLayoutManager(activity)
 
         //initializing adapter
         val adapter = NumberRVAdapter(requireContext(), this)
 
         //passing adapter to recyclerView
-        binding.rvAlertNumber.adapter = adapter
+        binding?.rvAlertNumber?.adapter = adapter
 
         //observing allNumbers LiveData to see changes and update ui if changes are made
         viewModel.allNumbers.observe(viewLifecycleOwner, Observer { list -> list?.let {
@@ -76,9 +81,9 @@ import java.util.*
         } })
 
 
-        binding.btnSave.setOnClickListener {
+        binding?.btnSave?.setOnClickListener {
 
-            val enteredNumber = binding.etNumber.text.toString()
+            val enteredNumber = binding?.etNumber?.text.toString()
 
             //checking number is empty or not before adding to the list
             if (enteredNumber.isNotEmpty()) {
@@ -90,9 +95,9 @@ import java.util.*
         }
 
         //changing app language according spinner selection when check button is clicked
-        binding.btnChangeLang.setOnClickListener {
+        binding?.btnChangeLang?.setOnClickListener {
 
-            langSelected = binding.spLanguage.selectedItem.toString()
+            langSelected = binding?.spLanguage?.selectedItem.toString()
             //changing language
             changeLang(langSelected)
         }
@@ -109,8 +114,9 @@ import java.util.*
 
         //making alert shortcut notification
         val notificationAlert = NotificationCompat.Builder(requireContext(), CHANNERL_ID)
-                .setContentText("Click to send alert in emergency")
-                .setSmallIcon(R.drawable.ic_alert)
+                .setContentText("Alert in emergency")
+                .setSmallIcon(R.drawable.ic_foreground)
+                .setColor(resources.getColor(R.color.light_green))
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setOngoing(true)
                 .setContentIntent(pendingIntent)
@@ -119,11 +125,16 @@ import java.util.*
         val notificationManager = NotificationManagerCompat.from(requireContext())
 
         //on switch flip
-        binding.switchAlert.setOnCheckedChangeListener { _, isChecked ->
+        binding?.switchAlert?.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
+                savePrefData()
                 notificationManager.notify(NOTIFICATION_ID, notificationAlert)
             }
             else {
+                sharedPreferences = requireContext().getSharedPreferences("pref", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putBoolean("isAlertNotificationActive", false)
+                editor.apply()
                 notificationManager.cancel(NOTIFICATION_ID)
             }
         }
@@ -162,7 +173,7 @@ import java.util.*
         setLocale(language!!)
     }
 
-    fun createNotificationChannel() {
+    private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(CHANNERL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
             val manager = requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -170,10 +181,26 @@ import java.util.*
         }
     }
 
+    private fun savePrefData() {
+        sharedPreferences = requireContext().getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("isAlertNotificationActive", true)
+        editor.apply()
+    }
+
+    private fun restorePrefData(): Boolean{
+        sharedPreferences = requireContext().getSharedPreferences("pref", Context.MODE_PRIVATE)
+        return sharedPreferences.getBoolean("isAlertNotificationActive", false)
+    }
+
     override fun onItemClicked(number: Number) {
         //whenever a number is clicked we call the delete fun in viewModel
         viewModel.deleteNumber(number)
     }
 
+        override fun onDestroy() {
+            super.onDestroy()
+            binding = null
+        }
 
 }

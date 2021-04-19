@@ -222,13 +222,6 @@ class Alert : Fragment() {
         if (requestCode == requestSendSms) {
             getLocation()
         }
-
-        //used just for debugging
-        if (requestCode == PERMISSION_ID){
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.d("Debug:", "Permission is granted")
-            }
-        }
     }
 
 }

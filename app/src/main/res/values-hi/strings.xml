@@ -27,4 +27,7 @@
     <string name="settings">समायोजन</string>
     <string name="hold_button_for_more_than_5_seconds_to_alert">5 सेकंड से अधिक के लिए बटन दबाए रखें अलर्ट करने के लिय</string>
     <string name="alert">अलर्ट</string>
+    <string name="next">अगला</string>
+    <string name="to_show_shortcut_of_alert_in_notification">अधिसूचना में अलर्ट का शॉर्टकट दिखाने के लिए</string>
+    <string name="change_app_language">ऐप की भाषा बदलें</string>
 </resources>

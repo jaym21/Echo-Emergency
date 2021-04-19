@@ -13,18 +13,11 @@ class NumberDiffUtil(private val oldList: List<Number>, private val newList: Lis
     }
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].id == newList[newItemPosition].id
+        return oldList[oldItemPosition] === newList[newItemPosition]
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return when {
-            oldList[oldItemPosition].id != newList[newItemPosition].id -> {
-                false
-            }
-            oldList[oldItemPosition].number != newList[newItemPosition].number -> {
-                false
-            }
-            else -> true
-        }
+        return oldList[oldItemPosition].id == newList[newItemPosition].id
+                && oldList[oldItemPosition].number == newList[newItemPosition].number
     }
 }

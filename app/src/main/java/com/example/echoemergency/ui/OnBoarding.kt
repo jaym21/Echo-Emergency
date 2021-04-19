@@ -27,10 +27,7 @@ class OnBoarding : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        if (restorePrefData()) {
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//        }
+
 
         binding = ActivityOnBoardingBinding.inflate(layoutInflater)
         setContentView(binding?.root)
@@ -66,7 +63,7 @@ class OnBoarding : AppCompatActivity() {
         tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 position = tab!!.position
-                //if we are at second last intro screen tgen changing next button into finish for last screen
+                //if we are at second last intro screen then changing next button into finish for last screen
                 if (tab.position == (onBoardingData.size - 1 )) {
                     next.text = "Finish"
                 }
@@ -98,10 +95,6 @@ class OnBoarding : AppCompatActivity() {
         editor.apply()
     }
 
-    private fun restorePrefData(): Boolean{
-        sharedPreferences = applicationContext.getSharedPreferences("pref", Context.MODE_PRIVATE)
-        return sharedPreferences.getBoolean("isFirstTimeRun", false)
-    }
 
     override fun onDestroy() {
         super.onDestroy()

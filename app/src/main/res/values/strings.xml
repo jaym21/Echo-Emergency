@@ -31,6 +31,8 @@
     <string name="hold_button_for_more_than_5_seconds_to_alert">Hold button for more than 5 seconds to alert</string>
     <string name="alert">Alert</string>
     <string name="next">Next</string>
+    <string name="to_show_shortcut_of_alert_in_notification">To show shortcut of alert in notification</string>
+    <string name="change_app_language">Change app language</string>
 
     <string-array name="languages">
         <item>Choose Language</item>
